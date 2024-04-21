@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@import url(https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css);
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+
+:root {
+  --primary-color: #F1CDC4;
+  --secondary-color: #F7DBD4;
+  --tertiary-color: #FAEBE7;
+  --primary-accent-color: #1D454C;
+  --secondary-accent-color: #386168;
+  --tertiary-accent-color: #DABD78;
+}
+
+.primary-background {
+  background-color: var(--primary-color);
+}
+
+.secondary-background {
+  background-color: var(--secondary-color);
+}
+
+.tertiary-background {
+  background-color: var(--tertiary-color);
+}
+
+.primary-accent {
+  color: var(--primary-accent-color);
+}
+
+.secondary-accent {
+  color: var(--secondary-accent-color);
+}
+
+.tertiary-accent {
+  color: var(--tertiary-accent-color);
+}
+
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
