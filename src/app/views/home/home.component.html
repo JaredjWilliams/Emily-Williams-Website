@@ -23,12 +23,41 @@
     [description]="'I have a variety of products that I have created. From paintings to prints, I have a little bit of everything. Check out my shop to see what I have available. '"
     [imageOne]= "'assets/campuses/ball_state.jpg'"
     [subTitleOne]="'Campuses'"
+    [subDescriptionOne]="'$150 starting  + shipping'"
     [imageTwo]="'assets/homes/Krasicky.jpg'"
     [subTitleTwo]="'Homes'"
+    [subDescriptionTwo]="'$150 starting  + shipping'"
     [imageThree]="'assets/pets/no_name_bulldog.jpg'"
     [subTitleThree]="'Pets'"
+    [subDescriptionThree]="'$200 starting  + shipping'"
   >
 
   </app-three-circle-center>
+
+  <app-block-text-pic
+    [isPicRight] = "false"
+    [image] = "'assets/campuses/wabash_college.jpg'"
+    [hasHeaderTitle] = "true"
+    [headingTitle]="'Details'"
+    [title]="'Dimensions and Materials'"
+    [hasList] = "true"
+    [list] = "['All of my paintings are on watercolor paper and painted with watercolor. ', 'They can be ordered in size 8x10 or 11x14. ']"
+  >
+
+  </app-block-text-pic>
+
+  <app-block-text-pic
+    [isPicRight] = "true"
+    [image] = "'assets/homes/Nussbaums.jpg'"
+    [title]="'Shipping'"
+    [hasList] = "true"
+    [list] = "['A 50% deposit is required to order.', 'Shipping is $15.']"
+  >
+
+  </app-block-text-pic>
+
+  <app-pricing>
+
+  </app-pricing>
 
 </div>

@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, input, Input, Renderer2, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-block-text-pic',
@@ -18,6 +18,8 @@ export class BlockTextPicComponent {
   @Input() fromLeft: number = 0;
   @Input() objectPosition: string = ""
   @Input() hasBorder: boolean = false;
+  @Input() hasList: boolean = false;
+  @Input() list: string[] = [];
 
   @ViewChild('imageElement') imageElement!: ElementRef;
 
@@ -28,6 +30,7 @@ export class BlockTextPicComponent {
   //     this.renderer.setStyle(this.imageElement.nativeElement, 'object-position', this.objectPosition);
   //   }
   // }
+
 
 
 }

@@ -3,7 +3,7 @@
   width: 200px;
   border-radius: 50%;
   border: 15px solid var(--tertiary-accent-color);
-  object-fit: contain;
+  object-fit: cover;
   background-color: white;
   margin: 20px;
 }

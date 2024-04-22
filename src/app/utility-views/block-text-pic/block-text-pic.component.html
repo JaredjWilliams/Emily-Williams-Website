@@ -3,14 +3,19 @@
 
   <div class="d-flex flex-column align-items-center">
     <ng-container *ngIf="hasHeaderTitle">
-      <h2 class="pt-5 pacifico-regular">{{headingTitle}}</h2>
+      <h2 class="pt-4 pacifico-regular">{{headingTitle}}</h2>
     </ng-container>
 
-    <div class="d-flex flex-row p-5 container align-items-center">
+    <div class="d-flex flex-row p-4 container align-items-center">
       <ng-container *ngIf="isPicRight">
-        <div class="d-flex flex-column pt-5">
+        <div class="d-flex flex-column pt-5 flex-grow-1">
           <h2 class="pacifico-regular">{{title}}</h2>
           <p>{{description}}</p>
+          <ng-container *ngIf="hasList">
+            <ul>
+              <li *ngFor="let item of list">{{item}}</li>
+            </ul>
+          </ng-container>
         </div>
         <div class="image pl-5">
           <img src="{{image}}" alt="" class="rounded-corners shadow image-size">
@@ -20,9 +25,14 @@
         <div class="image pr-5">
           <img src="{{image}}" alt="" class="rounded-corners shadow image-size">
         </div>
-        <div class="d-flex flex-column pt-5">
+        <div class="d-flex flex-column pt-5 flex-grow-1">
           <h2 class="pacifico-regular">{{title}}</h2>
           <p>{{description}}</p>
+          <ng-container *ngIf="hasList">
+            <ul>
+              <li *ngFor="let item of list">{{item}}</li>
+            </ul>
+          </ng-container>
         </div>
       </ng-container>
     </div>
