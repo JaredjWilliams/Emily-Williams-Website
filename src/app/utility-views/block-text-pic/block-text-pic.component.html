@@ -1,0 +1,31 @@
+
+
+
+  <div class="d-flex flex-column align-items-center">
+    <ng-container *ngIf="hasHeaderTitle">
+      <h2 class="pt-5 pacifico-regular">{{headingTitle}}</h2>
+    </ng-container>
+
+    <div class="d-flex flex-row p-5 container align-items-center">
+      <ng-container *ngIf="isPicRight">
+        <div class="d-flex flex-column pt-5">
+          <h2 class="pacifico-regular">{{title}}</h2>
+          <p>{{description}}</p>
+        </div>
+        <div class="image pl-5">
+          <img src="{{image}}" alt="" class="rounded-corners shadow image-size">
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isPicRight">
+        <div class="image pr-5">
+          <img src="{{image}}" alt="" class="rounded-corners shadow image-size">
+        </div>
+        <div class="d-flex flex-column pt-5">
+          <h2 class="pacifico-regular">{{title}}</h2>
+          <p>{{description}}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+

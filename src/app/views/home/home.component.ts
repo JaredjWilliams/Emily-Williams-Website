@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SECONDARY_ACCENT} from "../../constants";
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  public readonly SECONDARY_ACCENT = SECONDARY_ACCENT;
 }

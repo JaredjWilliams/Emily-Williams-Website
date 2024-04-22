@@ -8,6 +8,8 @@ import { BodyComponent } from './views/body/body.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { HomeComponent } from './views/home/home.component';
 import { HeroComponent } from './utility-views/hero/hero.component';
+import {BlockTextPicComponent} from "./utility-views/block-text-pic/block-text-pic.component";
+import {ThreeCircleCenterComponent} from "./utility-views/three-circle-center/three-circle-center.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HeroComponent } from './utility-views/hero/hero.component';
     BodyComponent,
     FooterComponent,
     HomeComponent,
-    HeroComponent
+    HeroComponent,
+    BlockTextPicComponent,
+    ThreeCircleCenterComponent
   ],
   imports: [
     BrowserModule,
