@@ -1,3 +1,23 @@
-<div class="picture-frame">
+<div class="pricing-container pt-3 pb-5">
+  <div class="pb-4">
+    <h1 class="text-center pacifico-regular">Pricing</h1>
+  </div>
+  <div class="d-flex flex-row align-items-center justify-content-center">
+
+    <ng-container *ngFor="let product of products">
+
+      <app-product-pricing-card
+      [image]="product.image"
+      [title]="product.title"
+      [price]="product.price"
+      [description]="product.description"
+      >
+
+      </app-product-pricing-card>
+
+    </ng-container>
+
 
 </div>
+
+
