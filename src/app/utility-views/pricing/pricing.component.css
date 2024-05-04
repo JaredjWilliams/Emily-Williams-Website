@@ -1,4 +1,7 @@
-.picture-frame {
-  background-image: url("/assets/picture_frame.png");
-  background-size: cover;
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--secondary-color);
 }

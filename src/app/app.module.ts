@@ -11,6 +11,7 @@ import { HeroComponent } from './utility-views/hero/hero.component';
 import {BlockTextPicComponent} from "./utility-views/block-text-pic/block-text-pic.component";
 import {ThreeCircleCenterComponent} from "./utility-views/three-circle-center/three-circle-center.component";
 import { PricingComponent } from './utility-views/pricing/pricing.component';
+import { ProductPricingCardComponent } from './utility-views/pricing/product-pricing-card/product-pricing-card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PricingComponent } from './utility-views/pricing/pricing.component';
     HeroComponent,
     BlockTextPicComponent,
     ThreeCircleCenterComponent,
-    PricingComponent
+    PricingComponent,
+    ProductPricingCardComponent
   ],
   imports: [
     BrowserModule,
