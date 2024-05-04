@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BodyComponent } from './body.component';
+import {AppModule} from "../../app.module";
 
 describe('BodyComponent', () => {
   let component: BodyComponent;
@@ -8,10 +9,10 @@ describe('BodyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BodyComponent]
+      imports: [AppModule]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(BodyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
