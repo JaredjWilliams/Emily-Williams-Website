@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {PRODUCTS} from "../../constants";
 
 @Component({
@@ -12,5 +12,6 @@ export class PricingComponent {
   subDescriptionOne: string | undefined;
 
   products = PRODUCTS
+  @Input() description!: string;
 
 }

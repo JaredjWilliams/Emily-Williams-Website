@@ -1,6 +1,6 @@
 .image {
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
   border-radius: 50%;
   border: 15px solid var(--tertiary-accent-color);
   object-fit: cover;

@@ -38,10 +38,16 @@
     [isPicRight] = "false"
     [image] = "'assets/campuses/wabash_college.jpg'"
     [hasHeaderTitle] = "true"
-    [headingTitle]="'Details'"
-    [title]="'Dimensions and Materials'"
+    [headingTitle]="'Details & Services'"
+    [title]="'Dimensions & Materials'"
     [hasList] = "true"
-    [list] = "['All of my paintings are on watercolor paper and painted with watercolor. ', 'They can be ordered in size 8x10 or 11x14. ']"
+    [list] = "[
+    'All of my paintings are on watercolor paper and painted with watercolor. ',
+     'They can be ordered in size 8x10 or 11x14. ',
+     'Photos can be included in the order form. ',
+     'Text can be added to the bottom of any painting, there is an option for this in the order form.',
+     'For home paintings an address can be added to the bottom of the painting.'
+     ]"
   >
 
   </app-block-text-pic>
@@ -49,14 +55,23 @@
   <app-block-text-pic
     [isPicRight] = "true"
     [image] = "'assets/homes/Nussbaums.jpg'"
-    [title]="'Shipping'"
+    [title]="'Payment & Shipping'"
     [hasList] = "true"
-    [list] = "['A 50% deposit is required to order.', 'Shipping is $15.']"
+    [list] = "[
+    'Payment is processed through PayPal. Shipping details can be applied to the transaction.',
+    'I will send an invoice through PayPal Business for the 50% deposit. I will need the customer’s email to send an invoice.',
+    'Once the painting is complete, I will send a photo to you. Then I will send another invoice for the last 50%. +shipping',
+    'I will need your name and address to ship the painting. This is included in the order form.',
+    'A 50% deposit is required to order.',
+     'Shipping is $15.'
+     ]"
   >
 
   </app-block-text-pic>
 
-  <app-pricing>
+  <app-pricing
+  [description]="'All of my paintings start at either $150 or $200 and the price varies based on the level of detail involved in the painting. I can quote based on the photo and size desired.'"
+  >
 
   </app-pricing>
 
