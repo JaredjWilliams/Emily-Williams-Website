@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PricingComponent } from './pricing.component';
+import {ProductPricingCardComponent} from "./product-pricing-card/product-pricing-card.component";
 
 describe('PricingComponent', () => {
   let component: PricingComponent;
@@ -8,10 +9,13 @@ describe('PricingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PricingComponent]
+      declarations: [
+        PricingComponent,
+        ProductPricingCardComponent
+      ]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(PricingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

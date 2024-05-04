@@ -3,16 +3,21 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import {AppModule} from "./app.module";
 import {HeaderComponent} from "./views/header/header.component";
+import {BodyComponent} from "./views/body/body.component";
+import {FooterComponent} from "./views/footer/footer.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        HeaderComponent
+
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent,
+        BodyComponent,
+        FooterComponent
       ],
     }).compileComponents();
   });
