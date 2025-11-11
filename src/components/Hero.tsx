@@ -24,7 +24,7 @@ export function Hero() {
             
             <h1 className="text-6xl lg:text-7xl text-[#0A2E35] leading-tight">
               Original Paintings by{" "}
-              <span className="text-[#C9A961]">Emily Wiliams</span>
+              <span className="text-[#C9A961]">Emily Wiliams Testing</span>
             </h1>
             
             <p className="text-xl text-[#2D5A63] max-w-xl">
