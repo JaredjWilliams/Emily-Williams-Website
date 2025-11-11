@@ -1,0 +1,42 @@
+{
+  "UserPool": {
+    "PoolName": "emily-williams-users",
+    "AutoVerifiedAttributes": ["email"],
+    "UsernameAttributes": ["email"],
+    "Policies": {
+      "PasswordPolicy": {
+        "MinimumLength": 8,
+        "RequireUppercase": true,
+        "RequireLowercase": true,
+        "RequireNumbers": true,
+        "RequireSymbols": false
+      }
+    },
+    "Schema": [
+      {
+        "Name": "email",
+        "AttributeDataType": "String",
+        "Required": true,
+        "Mutable": true
+      },
+      {
+        "Name": "name",
+        "AttributeDataType": "String",
+        "Required": false,
+        "Mutable": true
+      }
+    ]
+  },
+  "UserPoolClient": {
+    "ClientName": "emily-williams-web-client",
+    "GenerateSecret": false,
+    "ExplicitAuthFlows": [
+      "ALLOW_USER_PASSWORD_AUTH",
+      "ALLOW_REFRESH_TOKEN_AUTH",
+      "ALLOW_USER_SRP_AUTH"
+    ],
+    "SupportedIdentityProviders": ["COGNITO"],
+    "PreventUserExistenceErrors": "ENABLED"
+  }
+}
+

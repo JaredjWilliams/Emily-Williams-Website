@@ -1,0 +1,21 @@
+{
+  "name": "emily-williams-lambda",
+  "version": "1.0.0",
+  "description": "Lambda functions for Emily Williams website API",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "serverless deploy"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.490.0",
+    "@aws-sdk/lib-dynamodb": "^3.490.0",
+    "aws-jwt-verify": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.130",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.2.2"
+  }
+}
+

@@ -1,7 +1,0 @@
-.pricing-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: var(--secondary-color);
-}

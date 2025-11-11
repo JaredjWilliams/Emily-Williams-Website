@@ -1,27 +1,89 @@
-# EmilyWebsite
+# Emily Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+A modern React application built with Vite, TypeScript, and Tailwind CSS - optimized for porting Figma designs.
 
-## Development server
+## Tech Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework for easy Figma design porting
+- **React Router** - Client-side routing
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
 
-## Build
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Installation
 
-## Running unit tests
+1. Install dependencies:
+```bash
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Start the development server:
+```bash
+npm run dev
+```
 
-## Running end-to-end tests
+The application will be available at `http://localhost:4200`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Building for Production
 
-## Further help
+```bash
+npm run build
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The production build will be in the `dist/` directory.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Porting Figma Designs
+
+This project is configured with Tailwind CSS and custom design tokens that match your existing color palette:
+
+- **Primary Colors**: Blush Pink (#E8B8B0) and variations
+- **Secondary Colors**: Muted Gold (#C9A961)
+- **Accent Colors**: Dark Teal (#0A2E35)
+
+All design tokens from your `styles.css` are available as Tailwind utilities. You can easily match Figma designs by:
+
+1. Using Tailwind's utility classes directly
+2. Referencing the custom color palette (e.g., `bg-primary`, `text-accent`)
+3. Using the spacing system (e.g., `p-lg`, `m-xl`)
+4. Leveraging the typography system (e.g., `font-display`, `text-2xl`)
+
+## Project Structure
+
+```
+src/
+  ├── App.tsx          # Main app component
+  ├── main.tsx         # Application entry point
+  ├── styles.css       # Global styles with Tailwind directives
+  └── assets/          # Static assets (images, etc.)
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Design System
+
+The project includes a comprehensive design system with:
+- Custom color palette (matching your existing styles)
+- Typography scale
+- Spacing system
+- Shadow/elevation system
+- Border radius utilities
+
+All available in both CSS variables (in `styles.css`) and Tailwind utilities.

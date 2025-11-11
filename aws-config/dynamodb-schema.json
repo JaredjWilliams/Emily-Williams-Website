@@ -1,0 +1,123 @@
+{
+  "Tables": [
+    {
+      "TableName": "emily-williams-orders",
+      "KeySchema": [
+        {
+          "AttributeName": "PK",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "SK",
+          "KeyType": "RANGE"
+        }
+      ],
+      "AttributeDefinitions": [
+        {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1SK",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "GSI1",
+          "KeySchema": [
+            {
+              "AttributeName": "GSI1PK",
+              "KeyType": "HASH"
+            },
+            {
+              "AttributeName": "GSI1SK",
+              "KeyType": "RANGE"
+            }
+          ],
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    },
+    {
+      "TableName": "emily-williams-user-preferences",
+      "KeySchema": [
+        {
+          "AttributeName": "PK",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "SK",
+          "KeyType": "RANGE"
+        }
+      ],
+      "AttributeDefinitions": [
+        {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    },
+    {
+      "TableName": "emily-williams-paintings",
+      "KeySchema": [
+        {
+          "AttributeName": "PK",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "SK",
+          "KeyType": "RANGE"
+        }
+      ],
+      "AttributeDefinitions": [
+        {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      ],
+      "BillingMode": "PAY_PER_REQUEST"
+    }
+  ],
+  "DataPatterns": {
+    "Orders": {
+      "PK": "USER#{userId}",
+      "SK": "ORDER#{orderId}",
+      "GSI1PK": "ORDER",
+      "GSI1SK": "{timestamp}"
+    },
+    "UserPreferences": {
+      "PK": "USER#{userId}",
+      "SK": "PREFERENCE#{preferenceType}"
+    },
+    "Paintings": {
+      "PK": "PAINTING",
+      "SK": "{paintingId}"
+    },
+    "UserFavorites": {
+      "PK": "USER#{userId}",
+      "SK": "FAVORITE#{paintingId}"
+    }
+  }
+}
+
