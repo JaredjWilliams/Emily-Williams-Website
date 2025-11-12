@@ -1,0 +1,205 @@
+@use '../styles.scss' as *;
+
+// Base button styles
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem; // gap-2 (8px with 16px base = 0.8rem with 10px base)
+  white-space: nowrap;
+  border-radius: 0.6rem; // rounded-md (6px with 16px base = 0.6rem with 10px base)
+  font-size: 1.4rem; // text-sm (14px with 16px base = 1.4rem with 10px base)
+  font-weight: 500; // font-medium
+  transition: all 0.2s ease;
+  outline: none;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  // SVG styles
+  svg {
+    pointer-events: none;
+    flex-shrink: 0;
+    
+    &:not([class*='size-']) {
+      width: 1.6rem; // size-4 (16px with 16px base = 1.6rem with 10px base)
+      height: 1.6rem;
+    }
+  }
+
+  // Disabled state
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  // Focus-visible state
+  &:focus-visible {
+    border-color: var(--color-ring, #0A2E35);
+    box-shadow: 0 0 0 3px rgba(10, 46, 53, 0.1); // ring-ring/50 ring-[3px]
+  }
+
+  // Aria-invalid state
+  &[aria-invalid="true"] {
+    border-color: var(--color-error, #E57373);
+    box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2); // ring-destructive/20
+    
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.4); // dark:ring-destructive/40
+    }
+  }
+}
+
+// Variant: Default
+.buttonDefault {
+  background-color: transparent;
+  color: var(--color-text, #0A2E35); // primary-foreground
+
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+}
+
+// Variant: Destructive
+.buttonDestructive {
+  background-color: transparent;
+  color: var(--color-error, #E57373);
+
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2); // ring-destructive/20
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: transparent;
+    
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.4); // dark:ring-destructive/40
+    }
+  }
+}
+
+// Variant: Outline
+.buttonOutline {
+  border: 1px solid var(--color-border, #2D5A63);
+  background-color: transparent;
+  color: var(--color-text, #0A2E35);
+
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: transparent;
+    border-color: var(--color-border, #2D5A63); // dark:border-input
+
+    &:hover {
+      background-color: transparent;
+      opacity: 0.8;
+    }
+  }
+}
+
+// Variant: Secondary
+.buttonSecondary {
+  background-color: transparent;
+  color: var(--color-text, #0A2E35); // secondary-foreground
+
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+}
+
+// Variant: Ghost
+.buttonGhost {
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:hover {
+      background-color: transparent;
+      opacity: 0.8;
+    }
+  }
+}
+
+// Variant: Link
+.buttonLink {
+  background-color: transparent;
+  color: var(--color-primary, #E8B8B0);
+  text-decoration: underline;
+  text-underline-offset: 0.4rem; // underline-offset-4 (4px = 0.4rem with 10px base)
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Size: Default
+.buttonSizeDefault {
+  height: 3rem; // h-9 (36px with 16px base = 3.6rem with 10px base)
+  padding-left: 1.6rem; // px-4 (16px = 1.6rem with 10px base)
+  padding-right: 1.6rem;
+  padding-top: 0.8rem; // py-2 (8px = 0.8rem with 10px base)
+  padding-bottom: 0.8rem;
+
+  // When button has svg, adjust padding
+  &:has(> svg) {
+    padding-left: 1.2rem; // has-[>svg]:px-3 (12px = 1.2rem with 10px base)
+    padding-right: 1.2rem;
+  }
+}
+
+// Size: Small
+.buttonSizeSm {
+  height: 3rem; // h-8 (32px with 16px base = 3.2rem with 10px base)
+  border-radius: 0.6rem; // rounded-md
+  gap: 0.6rem; // gap-1.5 (6px = 0.6rem with 10px base)
+  padding-left: 1.2rem; // px-3 (12px = 1.2rem with 10px base)
+  padding-right: 1.2rem;
+  padding-top: 0.8rem; // py-2
+  padding-bottom: 0.8rem;
+
+  // When button has svg, adjust padding
+  &:has(> svg) {
+    padding-left: 1rem; // has-[>svg]:px-2.5 (10px = 1rem with 10px base)
+    padding-right: 1rem;
+  }
+}
+
+// Size: Large
+.buttonSizeLg {
+  height: 3rem; // h-10 (40px with 16px base = 4rem with 10px base)
+  border-radius: 0.6rem; // rounded-md
+  padding-left: 2.4rem; // px-6 (24px = 2.4rem with 10px base)
+  padding-right: 2.4rem;
+  padding-top: 0.8rem; // py-2
+  padding-bottom: 0.8rem;
+
+  // When button has svg, adjust padding
+  &:has(> svg) {
+    padding-left: 1.6rem; // has-[>svg]:px-4 (16px = 1.6rem with 10px base)
+    padding-right: 1.6rem;
+  }
+}
+
+// Size: Icon
+.buttonSizeIcon {
+  width: 3.6rem; // size-9 (36px with 16px base = 3.6rem with 10px base)
+  height: 3rem;
+  border-radius: 0.6rem; // rounded-md
+  padding: 0;
+}
+

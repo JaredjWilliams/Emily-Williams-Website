@@ -1,0 +1,233 @@
+@use '../styles.scss' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #FAE8E3, white, #F5D5CE);
+}
+
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(10, 46, 53, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 46, 53, 0.1) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  opacity: 0.05;
+}
+
+.container {
+  max-width: 124rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  position: relative;
+  z-index: 10;
+
+  @media (min-width: 1024px) {
+    max-width: 124rem;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 4.8rem;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4.8rem;
+  }
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  > * {
+    margin: 0;
+  }
+}
+
+.badge {
+  width: fit-content;
+  display: inline-block;
+  padding: 0.8rem 1.6rem; // py-2 px-4 (with 10px base: 0.8rem = 8px, 1.6rem = 16px)
+  background-color: #E8B8B0;
+  color: #0A2E35;
+  border-radius: 9999px;
+}
+
+.heading {
+  font-size: 4.5rem; // text-6xl (60px with 16px base = 6rem with 10px base)
+  line-height: 1.25; // leading-tight
+  color: #0A2E35;
+  margin: 0;
+
+  @media (min-width: 1024px) {
+    font-weight: 400;
+    font-size: 4.5rem; // text-7xl (72px with 16px base = 7.2rem with 10px base)
+  }
+
+  .highlight {
+    color: #C9A961;
+  }
+}
+
+.description {
+  font-size: 2.4rem;
+  color: #2D5A63;
+  max-width: 48rem;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+}
+
+.primaryButton {
+  background-color: #C9A961 !important;
+  color: white !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.8rem !important; // gap-2 (8px with 16px base = 0.8rem with 10px base)
+  white-space: nowrap !important;
+  font-size: 1.4rem !important; // text-sm (14px with 16px base = 1.4rem with 10px base)
+  font-weight: 500 !important; // font-medium
+  transition: all 0.2s ease !important;
+  height: 3rem !important; // h-10 (40px with 16px base = 4rem with 10px base)
+  border-radius: 0.6rem !important; // rounded-md (6px with 16px base = 0.6rem with 10px base)
+  padding-left: 2.4rem !important; // px-6 (24px with 16px base = 2.4rem with 10px base)
+  padding-right: 2.4rem !important;
+  outline: none !important;
+  cursor: pointer !important;
+
+  // When button has svg, adjust padding-right to px-4 (1.6rem)
+  &:has(> svg) {
+    padding-right: 1.6rem !important; // has-[>svg]:px-4
+  }
+
+  &:hover {
+    background-color: #D4B574 !important;
+  }
+
+  &:focus-visible {
+    border-color: var(--color-ring, #0A2E35) !important;
+    box-shadow: 0 0 0 3px rgba(10, 46, 53, 0.1) !important;
+  }
+
+  svg {
+    width: 2rem !important; // h-5 w-5 (20px with 16px base = 2rem with 10px base)
+    height: 2rem !important;
+    flex-shrink: 0 !important;
+    pointer-events: none !important;
+  }
+
+  &:disabled {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+  }
+}
+
+.buttonIcon {
+  // Icon spacing is handled by gap on parent button
+  width: 2rem;
+  height: 2rem;
+}
+
+.outlineButton {
+  border-color: #2D5A63 !important;
+  color: #2D5A63 !important;
+
+  &:hover {
+    background-color: #F0C8C0 !important;
+  }
+}
+
+.stats {
+  display: flex;
+  gap: 3.2rem;
+  padding-top: 3.2rem;
+  border-top: 1px solid #E8B8B0;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+
+    .number {
+      font-size: 4rem;
+      color: #C9A961;
+      line-height: 1.2;
+    }
+
+    .label {
+      color: #2D5A63;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.blob {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(4rem);
+  opacity: 0.7;
+  animation: blob 7s infinite;
+
+  &.blob1 {
+    top: -1.6rem;
+    left: -1.6rem;
+    background-color: #C9A961;
+  }
+
+  &.blob2 {
+    bottom: -3.2rem;
+    right: 1.6rem;
+    background-color: #E8B8B0;
+    animation-delay: 2s;
+  }
+
+  &.blob3 {
+    bottom: -1.6rem;
+    left: 8rem;
+    background-color: #F0C8C0;
+    animation-delay: 4s;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  max-width: 48.7rem;
+}
+
+.image {
+  border-radius: 1.6rem;
+  box-shadow: 0 2.4rem 4.8rem rgba(10, 46, 53, 0.24);
+  width: 100%;
+  height: 60rem;
+  object-fit: cover;
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+

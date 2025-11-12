@@ -8,6 +8,7 @@ import homeOne from "../assets/homes/home_1.jpg";
 import homeTwo from "../assets/homes/home_2.jpg";
 import homeThree from "../assets/homes/home_3.jpg";
 import homeFour from "../assets/homes/home_4.jpg";
+import styles from "./Gallery.module.scss";
 
 interface Painting {
   id: number;
@@ -82,71 +83,71 @@ export function Gallery() {
     : paintings.filter(p => p.category === selectedCategory);
 
   return (
-    <section id="gallery" className="py-24 bg-[#FAE8E3]">
-      <div className="container mx-auto px-4 max-w-[1240px]">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-5xl text-[#0A2E35] mb-6">Featured Gallery</h2>
-          <div className="w-24 h-1 bg-[#C9A961] mx-auto mb-8"></div>
-          <p className="text-xl text-[#2D5A63]">
+    <section id="gallery" className={styles.gallery}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Featured Gallery</h2>
+          <div className={styles.divider}></div>
+          <p className={styles.description}>
             Explore a curated selection of original paintings, each piece telling its own unique story
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className={styles.filters}>
           {categories.map((category) => (
             <Button
               key={category.id}
               variant={selectedCategory === category.id ? "default" : "outline"}
               onClick={() => setSelectedCategory(category.id)}
-              className={selectedCategory === category.id ? "bg-[#C9A961] hover:bg-[#D4B574] text-white" : "border-[#2D5A63] text-[#2D5A63] hover:bg-[#F0C8C0]"}
+              className={selectedCategory === category.id ? styles.active : styles.inactive}
             >
               {category.label}
             </Button>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className={styles.paintingsGrid}>
           {filteredPaintings.map((painting) => (
             <div 
               key={painting.id}
-              className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              className={styles.paintingCard}
             >
-              <div className="relative overflow-hidden aspect-[4/5]">
+              <div className={styles.imageContainer}>
                 <ImageWithFallback
                   src={painting.image}
                   alt={painting.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className={styles.image}
                 />
                 
                 {!painting.available && (
-                  <div className="absolute top-4 right-4">
-                    <Badge variant="secondary" className="bg-red-500 text-white">
+                  <div className={styles.soldBadge}>
+                    <Badge variant="secondary" className={styles.soldBadgeInner}>
                       Sold
                     </Badge>
                   </div>
                 )}
                 
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                  <Eye className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-12 w-12" />
+                <div className={styles.overlay}>
+                  <Eye className={styles.eyeIcon} />
                 </div>
               </div>
               
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-2xl text-[#0A2E35]">{painting.title}</h3>
-                  <Badge variant="outline" className="capitalize border-[#C9A961] text-[#C9A961]">
+              <div className={styles.cardContent}>
+                <div className={styles.cardHeader}>
+                  <h3 className={styles.cardTitle}>{painting.title}</h3>
+                  <Badge variant="outline" className={styles.categoryBadge}>
                     {painting.category}
                   </Badge>
                 </div>
                 
-                <p className="text-[#2D5A63] mb-4">{painting.size}</p>
+                <p className={styles.size}>{painting.size}</p>
                 
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl text-[#C9A961]">{painting.price}</span>
+                <div className={styles.cardFooter}>
+                  <span className={styles.price}>{painting.price}</span>
                   {painting.available && (
                     <Button 
                       variant="outline"
-                      className="border-[#2D5A63] text-[#2D5A63] hover:bg-[#F0C8C0]"
+                      className={styles.inquireButton}
                       onClick={() => {
                         const element = document.getElementById("order");
                         if (element) {
@@ -163,8 +164,8 @@ export function Gallery() {
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <p className="text-lg text-[#2D5A63] mb-6">
+        <div className={styles.footer}>
+          <p className={styles.footerText}>
             All paintings are original works, signed by the artist and come with a certificate of authenticity
           </p>
         </div>
@@ -172,4 +173,3 @@ export function Gallery() {
     </section>
   );
 }
-

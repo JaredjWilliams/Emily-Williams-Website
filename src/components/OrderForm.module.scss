@@ -1,0 +1,193 @@
+@use '../styles.scss' as *;
+
+.orderForm {
+  padding-top: 9.6rem;
+  padding-bottom: 9.6rem;
+  background: linear-gradient(to bottom right, #F5D5CE, white, #FAE8E3);
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+
+  @media (min-width: 1024px) {
+    max-width: 120rem;
+  }
+}
+
+.header {
+  max-width: 76.8rem;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 6.4rem;
+}
+
+.title {
+  font-size: 4.8rem;
+  color: #0A2E35;
+  margin-bottom: 2.4rem;
+}
+
+.divider {
+  width: 9.6rem;
+  height: 0.4rem;
+  background-color: #C9A961;
+  margin: 0 auto;
+  margin-bottom: 3.2rem;
+}
+
+.description {
+  font-size: 2rem;
+  color: #2D5A63;
+}
+
+.content {
+  display: grid;
+  gap: 4.8rem;
+  max-width: 96rem;
+  margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formContainer {
+  background-color: white;
+  border-radius: 1.6rem;
+  box-shadow: 0 1.6rem 3.2rem rgba(10, 46, 53, 0.2);
+  padding: 3.2rem;
+
+  @media (min-width: 1024px) {
+    padding: 4.8rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.contactCard {
+  background-color: white;
+  border-radius: 1.6rem;
+  box-shadow: 0 1.6rem 3.2rem rgba(10, 46, 53, 0.2);
+  padding: 3.2rem;
+}
+
+.contactTitle {
+  font-size: 2.4rem;
+  color: #0A2E35;
+  margin-bottom: 2.4rem;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+.iconWrapper {
+  background-color: #E8B8B0;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+}
+
+.icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #0A2E35;
+}
+
+.contactInfo {
+  .label {
+    color: #0A2E35;
+    margin-bottom: 0.4rem;
+  }
+
+  .value {
+    color: #2D5A63;
+  }
+}
+
+.processCard {
+  background: linear-gradient(to bottom right, #C9A961, #D4B574);
+  border-radius: 1.6rem;
+  box-shadow: 0 1.6rem 3.2rem rgba(10, 46, 53, 0.2);
+  padding: 3.2rem;
+  color: white;
+}
+
+.processTitle {
+  font-size: 2.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.processList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.processItem {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.processNumber {
+  flex-shrink: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  background-color: white;
+  color: #C9A961;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.processText {
+  flex: 1;
+}
+
+.submitButton {
+  width: 100% !important;
+  background-color: #C9A961 !important;
+  color: white !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.8rem !important;
+
+  &:hover {
+    background-color: #D4B574 !important;
+  }
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+  }
+}
+

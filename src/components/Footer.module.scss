@@ -1,0 +1,127 @@
+@use '../styles.scss' as *;
+
+.footer {
+  background-color: #0A2E35;
+  color: white;
+  padding-top: 4.8rem;
+  padding-bottom: 4.8rem;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+
+  @media (min-width: 1024px) {
+    max-width: 120rem;
+  }
+}
+
+.content {
+  display: grid;
+  gap: 3.2rem;
+  margin-bottom: 3.2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.section {
+  .title {
+    font-size: 2.4rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .text {
+    color: #E8B8B0;
+    margin-bottom: 1.6rem;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.socialLink {
+  background-color: #2D5A63;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #C9A961;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  color: #E8B8B0;
+}
+
+.link {
+  color: #E8B8B0;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #C9A961;
+  }
+}
+
+.newsletter {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.newsletterInput {
+  flex: 1;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
+  background-color: #2D5A63;
+  border: 1px solid #2D5A63;
+  color: white;
+  outline: none;
+
+  &::placeholder {
+    color: #E8B8B0;
+  }
+
+  &:focus {
+    border-color: #C9A961;
+  }
+}
+
+.newsletterButton {
+  padding: 0.8rem 2.4rem;
+  background-color: #C9A961;
+  border-radius: 0.8rem;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  color: white;
+
+  &:hover {
+    background-color: #D4B574;
+  }
+}
+
+.copyright {
+  border-top: 1px solid #2D5A63;
+  padding-top: 3.2rem;
+  text-align: center;
+  color: #E8B8B0;
+}
+
