@@ -1,0 +1,373 @@
+@use '../styles.scss' as *;
+
+// Select Trigger
+.selectTrigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem; // gap-2
+  white-space: nowrap;
+  border: 1px solid var(--color-border, #E0E0E0);
+  border-radius: 0.6rem; // rounded-md
+  background-color: var(--color-background, #F5F5F5);
+  padding-left: 1.2rem; // px-3
+  padding-right: 1.2rem;
+  padding-top: 0.8rem; // py-2
+  padding-bottom: 0.8rem;
+  font-size: 1.4rem; // text-sm
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  cursor: pointer;
+
+  // SVG styles
+  svg {
+    pointer-events: none;
+    flex-shrink: 0;
+    width: 1.6rem; // size-4
+    height: 1.6rem;
+    color: var(--color-text-secondary, #666);
+  }
+
+  // Placeholder state
+  &[data-placeholder] {
+    color: var(--color-text-secondary, #999);
+  }
+
+  // Focus-visible state
+  &:focus-visible {
+    border-color: var(--color-ring, #C9A961);
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1); // ring-ring/50 ring-[3px]
+  }
+
+  // Aria-invalid state
+  &[aria-invalid="true"] {
+    border-color: var(--color-error, #E57373);
+    box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2); // ring-destructive/20
+  }
+
+  // Disabled state
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // Size: Default
+  &[data-size="default"] {
+    height: 3.6rem; // h-9 (36px)
+  }
+
+  // Size: Small
+  &[data-size="sm"] {
+    height: 3.2rem; // h-8 (32px)
+  }
+
+  // Dark mode
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(45, 90, 99, 0.3); // dark:bg-input/30
+
+    &:hover {
+      background-color: rgba(45, 90, 99, 0.5); // dark:hover:bg-input/50
+    }
+
+    &[aria-invalid="true"] {
+      box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.4); // dark:ring-destructive/40
+    }
+  }
+}
+
+// Select Value
+.selectValue {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Select Content (Dropdown)
+.selectContent {
+  position: relative;
+  z-index: 50;
+  max-height: var(--radix-select-content-available-height);
+  min-width: 8rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 0.6rem; // rounded-md
+  border: 1px solid var(--color-border, #E0E0E0);
+  background-color: white;
+  color: var(--color-text, #333);
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1); // shadow-md
+  transform-origin: var(--radix-select-content-transform-origin);
+
+  // Popper position adjustments
+  &.selectContentPopper {
+    &[data-side="bottom"] {
+      transform: translateY(0.4rem);
+    }
+    &[data-side="left"] {
+      transform: translateX(-0.4rem);
+    }
+    &[data-side="right"] {
+      transform: translateX(0.4rem);
+    }
+    &[data-side="top"] {
+      transform: translateY(-0.4rem);
+    }
+  }
+
+  // Animations
+  &[data-state="open"] {
+    animation: selectFadeIn 0.15s ease-out, selectZoomIn 0.15s ease-out;
+  }
+
+  &[data-state="closed"] {
+    animation: selectFadeOut 0.1s ease-in, selectZoomOut 0.1s ease-in;
+  }
+
+  // Position-based animations
+  &[data-side="bottom"] {
+    &[data-state="open"] {
+      animation: selectFadeIn 0.15s ease-out, selectZoomIn 0.15s ease-out, selectSlideInFromTop 0.15s ease-out;
+    }
+    &[data-state="closed"] {
+      animation: selectFadeOut 0.1s ease-in, selectZoomOut 0.1s ease-in, selectSlideOutToTop 0.1s ease-in;
+    }
+  }
+
+  &[data-side="top"] {
+    &[data-state="open"] {
+      animation: selectFadeIn 0.15s ease-out, selectZoomIn 0.15s ease-out, selectSlideInFromBottom 0.15s ease-out;
+    }
+    &[data-state="closed"] {
+      animation: selectFadeOut 0.1s ease-in, selectZoomOut 0.1s ease-in, selectSlideOutToBottom 0.1s ease-in;
+    }
+  }
+
+  &[data-side="left"] {
+    &[data-state="open"] {
+      animation: selectFadeIn 0.15s ease-out, selectZoomIn 0.15s ease-out, selectSlideInFromRight 0.15s ease-out;
+    }
+    &[data-state="closed"] {
+      animation: selectFadeOut 0.1s ease-in, selectZoomOut 0.1s ease-in, selectSlideOutToLeft 0.1s ease-in;
+    }
+  }
+
+  &[data-side="right"] {
+    &[data-state="open"] {
+      animation: selectFadeIn 0.15s ease-out, selectZoomIn 0.15s ease-out, selectSlideInFromLeft 0.15s ease-out;
+    }
+    &[data-state="closed"] {
+      animation: selectFadeOut 0.1s ease-in, selectZoomOut 0.1s ease-in, selectSlideOutToRight 0.1s ease-in;
+    }
+  }
+}
+
+// Select Viewport
+.selectViewport {
+  padding: 0.4rem; // p-1
+}
+
+.selectViewportPopper {
+  height: var(--radix-select-trigger-height);
+  width: 100%;
+  min-width: var(--radix-select-trigger-width);
+  scroll-margin-top: 0.4rem; // scroll-my-1
+}
+
+// Select Item
+.selectItem {
+  position: relative;
+  display: flex;
+  width: 100%;
+  cursor: default;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 0.2rem; // rounded-sm
+  padding-top: 0.6rem; // py-1.5
+  padding-bottom: 0.6rem;
+  padding-left: 0.8rem; // pl-2
+  padding-right: 3.2rem; // pr-8
+  font-size: 1.4rem; // text-sm
+  outline: none;
+  user-select: none;
+
+  // SVG styles
+  svg {
+    pointer-events: none;
+    flex-shrink: 0;
+    width: 1.6rem; // size-4
+    height: 1.6rem;
+    color: var(--color-text-secondary, #666);
+  }
+
+  // Focus state
+  &:focus {
+    background-color: var(--color-accent, #0A2E35);
+    color: white;
+  }
+
+  // Disabled state
+  &[data-disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  // Check icon indicator
+  .selectItemIndicator {
+    position: absolute;
+    right: 0.8rem;
+    display: flex;
+    width: 1.4rem; // size-3.5
+    height: 1.4rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Select Label
+.selectLabel {
+  padding-left: 0.8rem; // px-2
+  padding-right: 0.8rem;
+  padding-top: 0.6rem; // py-1.5
+  padding-bottom: 0.6rem;
+  font-size: 1.2rem; // text-xs
+  color: var(--color-text-secondary, #666);
+}
+
+// Select Separator
+.selectSeparator {
+  background-color: var(--color-border, #E0E0E0);
+  pointer-events: none;
+  margin-left: -0.4rem; // -mx-1
+  margin-right: -0.4rem;
+  margin-top: 0.4rem; // my-1
+  margin-bottom: 0.4rem;
+  height: 1px; // h-px
+}
+
+// Select Scroll Buttons
+.selectScrollButton {
+  display: flex;
+  cursor: default;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.4rem; // py-1
+  padding-bottom: 0.4rem;
+
+  svg {
+    width: 1.6rem; // size-4
+    height: 1.6rem;
+  }
+}
+
+// Animations
+@keyframes selectFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes selectFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes selectZoomIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes selectZoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes selectSlideInFromTop {
+  from {
+    transform: translateY(-0.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes selectSlideOutToTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes selectSlideInFromBottom {
+  from {
+    transform: translateY(0.5rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes selectSlideOutToBottom {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(0.5rem);
+  }
+}
+
+@keyframes selectSlideInFromLeft {
+  from {
+    transform: translateX(-0.5rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes selectSlideOutToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-0.5rem);
+  }
+}
+
+@keyframes selectSlideInFromRight {
+  from {
+    transform: translateX(0.5rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes selectSlideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(0.5rem);
+  }
+}
+

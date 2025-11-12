@@ -1,0 +1,92 @@
+@use '../styles.scss' as *;
+
+// Base input styles
+.input {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: 3.6rem; // h-9 (36px with 16px base = 3.6rem with 10px base)
+  border: 1px solid var(--color-border, #E0E0E0);
+  border-radius: 0.6rem; // rounded-md
+  background-color: var(--color-background, #F5F5F5);
+  padding-left: 1.2rem; // px-3 (12px = 1.2rem with 10px base)
+  padding-right: 1.2rem;
+  padding-top: 0.4rem; // py-1 (4px = 0.4rem with 10px base)
+  padding-bottom: 0.4rem;
+  font-size: 1.6rem; // text-base (16px = 1.6rem with 10px base)
+  color: var(--color-text, #333);
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+
+  // Placeholder styling
+  &::placeholder {
+    color: var(--color-text-secondary, #999); // placeholder:text-muted-foreground
+  }
+
+  // Text selection styling
+  &::selection {
+    background-color: var(--color-primary, #E8B8B0); // selection:bg-primary
+    color: var(--color-text, #0A2E35); // selection:text-primary-foreground
+  }
+
+  // Focus-visible state
+  &:focus-visible {
+    border-color: var(--color-ring, #C9A961); // focus-visible:border-ring
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1); // focus-visible:ring-ring/50 ring-[3px]
+  }
+
+  // Aria-invalid state
+  &[aria-invalid="true"] {
+    border-color: var(--color-error, #E57373); // aria-invalid:border-destructive
+    box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.2); // aria-invalid:ring-destructive/20
+  }
+
+  // Disabled state
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // File input styling
+  &[type="file"] {
+    display: inline-flex;
+    height: 2.8rem; // file:h-7 (28px = 2.8rem with 10px base)
+    border: none; // file:border-0
+    background-color: transparent; // file:bg-transparent
+    font-size: 1.4rem; // file:text-sm
+    font-weight: 500; // file:font-medium
+    color: var(--color-text, #333); // file:text-foreground
+    padding: 0;
+    align-items: center;
+  }
+
+  // File input pseudo-element (the button)
+  &[type="file"]::file-selector-button {
+    display: inline-flex;
+    height: 2.8rem; // file:h-7
+    border: none; // file:border-0
+    background-color: transparent; // file:bg-transparent
+    font-size: 1.4rem; // file:text-sm
+    font-weight: 500; // file:font-medium
+    color: var(--color-text, #333); // file:text-foreground
+    padding: 0 0.8rem;
+    margin-right: 0.8rem;
+    cursor: pointer;
+  }
+
+  // Dark mode
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(45, 90, 99, 0.3); // dark:bg-input/30
+
+    &[aria-invalid="true"] {
+      box-shadow: 0 0 0 3px rgba(229, 115, 115, 0.4); // dark:aria-invalid:ring-destructive/40
+    }
+  }
+
+  // Medium breakpoint and up
+  @media (min-width: 768px) {
+    font-size: 1.4rem; // md:text-sm
+  }
+}
+
