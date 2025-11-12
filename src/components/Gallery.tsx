@@ -83,7 +83,7 @@ export function Gallery() {
 
   return (
     <section id="gallery" className="py-24 bg-[#FAE8E3]">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1240px]">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-5xl text-[#0A2E35] mb-6">Featured Gallery</h2>
           <div className="w-24 h-1 bg-[#C9A961] mx-auto mb-8"></div>

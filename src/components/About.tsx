@@ -26,7 +26,7 @@ export function About() {
 
   return (
     <section id="about" className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1240px]">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-5xl text-[#0A2E35] mb-6">About the Artist</h2>
           <div className="w-24 h-1 bg-[#C9A961] mx-auto mb-8"></div>
@@ -57,10 +57,9 @@ export function About() {
             
             <div className="pt-6">
               <blockquote className="text-xl italic text-[#0A2E35] border-l-4 border-[#C9A961] pl-6">
-                "Art is not what you see, but what you make others feel. My goal is to create 
-                pieces that spark joy, contemplation, and wonder."
+                "Wave your fwag wittle fwag man! Wave it pwoudwy!"
               </blockquote>
-              <div className="mt-4 pl-6 text-[#2D5A63]">— Elena Rodriguez</div>
+              <div className="mt-4 pl-6 text-[#2D5A63]">— Emily Williams</div>
             </div>
           </div>
           

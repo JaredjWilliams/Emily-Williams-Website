@@ -15,7 +15,7 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#FAE8E3] via-white to-[#F5D5CE]">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="max-w-[1240px] container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div className="inline-block px-4 py-2 bg-[#E8B8B0] text-[#0A2E35] rounded-full">
@@ -69,12 +69,12 @@ export function Hero() {
             </div>
           </div>
           
-          <div className="relative">
+          <div className="relative flex justify-center">
             <div className="absolute -top-4 -left-4 w-72 h-72 bg-[#C9A961] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
             <div className="absolute -bottom-8 right-4 w-72 h-72 bg-[#E8B8B0] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
             <div className="absolute -bottom-4 left-20 w-72 h-72 bg-[#F0C8C0] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
             
-            <div className="relative">
+            <div className="max-w-[487px]">
               <ImageWithFallback
                 src={headshotImage}
                 alt="Emily Williams in her studio"
