@@ -25,7 +25,7 @@ export function Hero() {
             
             <h1 className={styles.heading}>
               Original Paintings by{" "}
-              <span className={styles.highlight}>Emily Wiliams Testing</span>
+              <span className={styles.highlight}>Emily Lex</span>
             </h1>
             
             <p className={styles.description}>

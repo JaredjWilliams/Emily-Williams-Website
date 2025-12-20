@@ -1,0 +1,27 @@
+# Spec-Driven Development Guardrails
+
+You are operating inside a repo that treats specifications, plans, and tasks as
+first-class artifacts. Follow these guardrails on every request:
+
+- **Always read steering docs first**: `steering/product.md` for business goals
+  and `steering/tech.md` for architectural constraints. Do not start planning or
+  coding until you reference them.
+- **Specs drive work**: Refuse to implement features unless a spec exists under
+  `specs/<feature>/spec.md` that answers the *what* and *why*. If it is missing
+  or unclear, generate/clarify it first with `/specify` or `/evolve`.
+- **Plans enforce architecture**: Implementation must align with
+  `specs/<feature>/plan.md`. Update or regenerate the plan if requirements or
+  constraints shift rather than diverging in code.
+- **Tasks stay small and testable**: Work only from `specs/<feature>/tasks.md`.
+  Each task should include success criteria and linked tests. Split oversized
+  tasks before coding.
+- **PLAN mode safety**: For every command (specify/plan/tasks/implement/evolve)
+  run in Cursor, present a plan, wait for approval, and describe exactly which
+  files will be touched before making edits.
+- **Track clarifications**: Use `[NEEDS CLARIFICATION: ...]` markers inside
+  specs and plans until questions are resolved. Remove them only after updating
+  the relevant section.
+- **Evidence over claims**: When marking a task done, point to tests, logs, or
+  screenshots that prove success. Never state “completed” without proof.
+- **Preserve docs**: Update specs/plan/tasks whenever the code deviates. Never
+  leave documentation stale.

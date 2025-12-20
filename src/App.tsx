@@ -1,3 +1,4 @@
+import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Gallery } from "./components/Gallery";
@@ -8,6 +9,7 @@ import { Toaster } from "./ui/sonner";
 function App() {
   return (
     <div className="min-h-screen">
+      <Header />
       <Hero />
       <About />
       <Gallery />
