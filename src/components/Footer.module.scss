@@ -4,7 +4,8 @@
   background-color: #0A2E35;
   color: white;
   padding-top: 4.8rem;
-  padding-bottom: 4.8rem;
+  /* Extend teal through home indicator and under Safari’s bottom chrome */
+  padding-bottom: calc(4.8rem + env(safe-area-inset-bottom, 0px));
 }
 
 .container {

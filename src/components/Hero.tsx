@@ -108,16 +108,13 @@ export function Hero() {
         <div className={styles.container}>
           <div className={styles.content}>
             <div className={styles.textContent}>
-              <div className={styles.badge}>Fine Art Collection</div>
-
               <h1 className={styles.heading}>
                 Original Paintings by <span className={styles.highlight}>Emily Lex</span>
               </h1>
 
               <p className={styles.description}>
-                Discover unique contemporary art pieces that bring color, emotion, and sophistication
-                to your space. Each painting is an original work of art, handcrafted with passion
-                and precision.
+                Handcrafted originals—one-of-a-kind paintings made slowly, with care, for spaces that
+                deserve something personal and lasting.
               </p>
 
               <div className={styles.buttonGroup}>
@@ -147,7 +144,7 @@ export function Hero() {
                 </div>
                 <div>
                   <div className={styles.number}>200+</div>
-                  <div className={styles.label}>Happy Collectors</div>
+                  <div className={styles.label}>Happy Customers</div>
                 </div>
               </div>
             </div>

@@ -12,6 +12,12 @@ html {
   -webkit-text-size-adjust: 100%;
   /* Inset for hash / scrollIntoView so fixed header + sticky CTA do not cover section titles */
   scroll-padding-top: var(--anchor-scroll-padding, 6.4rem);
+  /* iOS Safari: area behind the bottom toolbar / rubber-band uses root canvas — match footer */
+  background-color: #0a2e35;
+}
+
+#root {
+  font-family: var(--font-primary);
 }
 
 body {

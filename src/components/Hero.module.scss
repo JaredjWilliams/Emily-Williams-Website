@@ -57,15 +57,6 @@
   }
 }
 
-.badge {
-  width: fit-content;
-  display: inline-block;
-  padding: 0.8rem 1.6rem; // py-2 px-4 (with 10px base: 0.8rem = 8px, 1.6rem = 16px)
-  background-color: #E8B8B0;
-  color: #0A2E35;
-  border-radius: 9999px;
-}
-
 .heading {
   font-size: 4.5rem; // text-6xl (60px with 16px base = 6rem with 10px base)
   line-height: 1.25; // leading-tight
@@ -120,6 +111,10 @@
   width: 100%;
   display: flex;
   pointer-events: none;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-end;
+  }
 }
 
 .stickyCtaButton {
@@ -127,6 +122,11 @@
   max-width: none !important;
   pointer-events: none;
   box-shadow: 0 0.4rem 1.2rem rgba(10, 46, 53, 0.18) !important;
+
+  @media (min-width: 1024px) {
+    width: auto !important;
+    max-width: max-content !important;
+  }
 }
 
 .stickyCtaBarVisible .stickyCtaButton {

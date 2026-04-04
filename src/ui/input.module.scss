@@ -13,6 +13,7 @@
   padding-right: 1.2rem;
   padding-top: 0.4rem; // py-1 (4px = 0.4rem with 10px base)
   padding-bottom: 0.4rem;
+  font-family: inherit;
   font-size: 1.6rem; // text-base (16px = 1.6rem with 10px base)
   color: var(--color-text, #333);
   transition: color 0.2s ease, box-shadow 0.2s ease;

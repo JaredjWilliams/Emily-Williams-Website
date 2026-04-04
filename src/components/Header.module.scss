@@ -20,18 +20,19 @@
   max-width: 124rem;
   margin: 0 auto;
   padding: 0 1.6rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  column-gap: 0.8rem;
 
   @media (max-width: 768px) {
     padding: 0 1.2rem;
-    padding-right: 5.2rem;
   }
 }
 
 .logoButton {
+  grid-column: 2;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,6 +92,8 @@
 
 .mobileMenuButton {
   display: none;
+  grid-column: 3;
+  justify-self: end;
   background: none;
   border: none;
   cursor: pointer;
@@ -111,10 +114,6 @@
 
   @media (max-width: 768px) {
     display: flex;
-    position: absolute;
-    top: 50%;
-    right: 1.2rem;
-    transform: translateY(-50%);
   }
 }
 
