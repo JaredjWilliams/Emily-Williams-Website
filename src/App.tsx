@@ -2,6 +2,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Gallery } from "./components/Gallery";
+import { TrustSection } from "./components/TrustSection";
 import { OrderForm } from "./components/OrderForm";
 import { Footer } from "./components/Footer";
 import { Toaster } from "./ui/sonner";
@@ -13,8 +14,9 @@ function App() {
       <Header />
       <main className={styles.main}>
         <Hero />
-        <About />
         <Gallery />
+        <About />
+        <TrustSection />
         <OrderForm />
       </main>
       <Footer />

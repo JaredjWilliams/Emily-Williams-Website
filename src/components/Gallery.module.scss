@@ -1,9 +1,12 @@
 @use '../styles.scss' as *;
 
 .gallery {
-  padding-top: 9.6rem;
-  padding-bottom: 9.6rem;
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
   background-color: #FAE8E3;
+  border-top-left-radius: var(--radius-2xl);
+  border-top-right-radius: var(--radius-2xl);
+  overflow: hidden;
 }
 
 .container {
@@ -161,6 +164,10 @@
 
 .cardContent {
   padding: 2.4rem;
+
+  @media (max-width: 768px) {
+    padding: 1.8rem;
+  }
 }
 
 .cardHeader {
@@ -168,6 +175,10 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1.2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0.6rem;
+  }
 }
 
 .cardTitle {
@@ -184,12 +195,20 @@
 .size {
   color: #2D5A63;
   margin-bottom: 1.6rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0.6rem;
+  }
 }
 
 .cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    gap: 0.6rem;
+  }
 }
 
 .price {
@@ -197,14 +216,30 @@
   color: #C9A961;
 }
 
-.footer {
+.empty {
+  grid-column: 1 / -1;
   text-align: center;
-  margin-top: 6.4rem;
+  padding: 4.8rem 2.4rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 1.2rem;
 }
 
-.footerText {
+.emptyText {
   font-size: 1.8rem;
   color: #2D5A63;
-  margin-bottom: 2.4rem;
+  margin: 0 0 2rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.emptyButton {
+  background-color: #C9A961 !important;
+  color: white !important;
+  border: none !important;
+
+  &:hover {
+    background-color: #D4B574 !important;
+  }
 }
 
