@@ -233,6 +233,20 @@ body {
 }
 
 /* ============================================
+   SECTION LAYOUT (main page sections)
+   ============================================ */
+:root {
+  /* Shared vertical padding; symmetric top/bottom on Hero, Gallery, About, Trust, Order */
+  --section-padding-y: 6rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-padding-y: 6.4rem;
+  }
+}
+
+/* ============================================
    Z-INDEX SYSTEM
    ============================================ */
 :root {

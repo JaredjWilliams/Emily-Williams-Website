@@ -1,4 +1,5 @@
-import { Award, Palette, Heart, Users } from "lucide-react";
+import { Award, Palette, Heart, Users, ArrowRight } from "lucide-react";
+import { Button } from "../ui/button";
 import styles from "./About.module.scss";
 
 export function About() {
@@ -96,6 +97,20 @@ export function About() {
               <p>Private Collections Worldwide</p>
             </div>
           </div>
+        </div>
+
+        <div className={styles.ctaWrap}>
+          <Button
+            type="button"
+            size="lg"
+            className={styles.cta}
+            onClick={() => {
+              document.getElementById("order")?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Start your commission
+            <ArrowRight className={styles.ctaIcon} aria-hidden />
+          </Button>
         </div>
       </div>
     </section>

@@ -21,34 +21,26 @@
   padding: 0 1.6rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.6rem;
+  justify-content: center;
   position: relative;
 
   @media (max-width: 768px) {
     padding: 0 1.2rem;
+    padding-right: 5.2rem;
   }
 }
 
-.iconButton {
+.logoButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text);
-  transition: var(--transition-color);
-
-  &:hover {
-    color: var(--color-text-secondary);
-  }
-
-  .icon {
-    width: 2rem;
-    height: 2rem;
-  }
+  padding: 0;
+  color: inherit;
+  text-align: center;
 }
 
 .logo {
@@ -56,19 +48,8 @@
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-  flex: 1;
   text-align: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   pointer-events: none;
-
-  @media (max-width: 768px) {
-    position: absolute;
-    transform: translateX(-50%);
-    flex: 0;
-    pointer-events: auto;
-  }
 }
 
 .logoScript {
@@ -87,19 +68,12 @@
   text-transform: uppercase;
 }
 
-.topBarRight {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-left: auto;
-
-  @media (max-width: 768px) {
-    gap: 0.4rem;
-  }
-}
-
 .nav {
   background-color: var(--color-background);
+
+  @media (max-width: 768px) {
+    border-top: none;
+  }
 }
 
 .navContent {
@@ -109,7 +83,8 @@
   position: relative;
 
   @media (max-width: 768px) {
-    padding: 0 1.2rem;
+    padding: 0;
+    min-height: 0;
   }
 }
 
@@ -135,6 +110,10 @@
 
   @media (max-width: 768px) {
     display: flex;
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    transform: translateY(-50%);
   }
 }
 
@@ -155,13 +134,13 @@
     gap: 0;
     padding: 0;
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     right: 0;
+    z-index: var(--z-index-dropdown);
     background-color: var(--color-background);
-    border-top: 0.1rem solid var(--color-border-light);
     box-shadow: var(--shadow-md);
-    max-height: calc(100vh - 8rem);
+    max-height: calc(100vh - 6rem);
     overflow-y: auto;
 
     &.navListOpen {

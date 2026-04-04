@@ -2,7 +2,7 @@ import { ImageWithFallback } from "../ImageWithFallback";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Eye } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import detroitHome from "../assets/homes/detroit_home.jpg";
 import homeOne from "../assets/homes/home_1.jpg";
 import homeTwo from "../assets/homes/home_2.jpg";
@@ -14,6 +14,8 @@ interface Painting {
   id: number;
   title: string;
   category: string;
+  /** Subject filter for nav (homes / pets / campuses) */
+  subject: "home" | "pets" | "campuses";
   price: string;
   size: string;
   image: string;
@@ -23,11 +25,21 @@ interface Painting {
 export function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
+  useEffect(() => {
+    const onSetCategory = (e: Event) => {
+      const detail = (e as CustomEvent<{ category: string }>).detail;
+      if (detail?.category) setSelectedCategory(detail.category);
+    };
+    window.addEventListener("gallery:setCategory", onSetCategory);
+    return () => window.removeEventListener("gallery:setCategory", onSetCategory);
+  }, []);
+
   const paintings: Painting[] = [
     {
       id: 1,
       title: "Detroit Home",
       category: "abstract",
+      subject: "home",
       price: "$3,200",
       size: "36\" × 48\"",
       image: detroitHome,
@@ -37,6 +49,7 @@ export function Gallery() {
       id: 3,
       title: "Home Painting",
       category: "contemporary",
+      subject: "home",
       price: "$4,500",
       size: "48\" × 60\"",
       image: homeOne,
@@ -46,6 +59,7 @@ export function Gallery() {
       id: 4,
       title: "Home Painting",
       category: "portrait",
+      subject: "home",
       price: "$3,800",
       size: "24\" × 36\"",
       image: homeTwo,
@@ -55,6 +69,7 @@ export function Gallery() {
       id: 5,
       title: "Home Painting",
       category: "contemporary",
+      subject: "home",
       price: "$5,200",
       size: "40\" × 50\"",
       image: homeThree,
@@ -64,6 +79,7 @@ export function Gallery() {
       id: 6,
       title: "Home Painting",
       category: "Home Painting",
+      subject: "home",
       price: "$2,900",
       size: "30\" × 30\"",
       image: homeFour,
@@ -78,9 +94,10 @@ export function Gallery() {
     { id: "campuses", label: "Campuses" },
   ];
 
-  const filteredPaintings = selectedCategory === "all" 
-    ? paintings 
-    : paintings.filter(p => p.category === selectedCategory);
+  const filteredPaintings =
+    selectedCategory === "all"
+      ? paintings
+      : paintings.filter((p) => p.subject === selectedCategory);
 
   return (
     <section id="gallery" className={styles.gallery}>
@@ -107,6 +124,20 @@ export function Gallery() {
         </div>
 
         <div className={styles.paintingsGrid}>
+          {filteredPaintings.length === 0 && (
+            <div className={styles.empty}>
+              <p className={styles.emptyText}>
+                Nothing in this category yet. View all works or start a custom commission.
+              </p>
+              <Button
+                type="button"
+                className={styles.emptyButton}
+                onClick={() => setSelectedCategory("all")}
+              >
+                View all works
+              </Button>
+            </div>
+          )}
           {filteredPaintings.map((painting) => (
             <div 
               key={painting.id}
@@ -162,12 +193,6 @@ export function Gallery() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className={styles.footer}>
-          <p className={styles.footerText}>
-            All paintings are original works, signed by the artist and come with a certificate of authenticity
-          </p>
         </div>
       </div>
     </section>

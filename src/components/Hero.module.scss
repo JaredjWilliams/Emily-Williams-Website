@@ -24,15 +24,14 @@
   max-width: 124rem;
   margin: 0 auto;
   padding: 0 1.6rem;
-  padding-top: 4rem;
-  padding-bottom: 8rem;
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
 
   position: relative;
   z-index: 10;
 
   @media (min-width: 1024px) {
     max-width: 124rem;
-    padding-top: 5.6rem;
   }
 }
 
@@ -88,6 +87,58 @@
   max-width: 48rem;
 }
 
+.primaryCtaObserve {
+  width: fit-content;
+}
+
+.stickyCtaBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-index-fixed);
+  padding: 0;
+  padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+  padding-left: calc(1.2rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(1.2rem + env(safe-area-inset-right, 0px));
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-0.8rem);
+  transition:
+    opacity 0.35s var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
+    transform 0.35s var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+}
+
+.stickyCtaBarVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stickyCtaInner {
+  width: 100%;
+  display: flex;
+  pointer-events: none;
+  transform: scaleX(0.22);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stickyCtaBarVisible .stickyCtaInner {
+  transform: scaleX(1);
+}
+
+.stickyCtaButton {
+  width: 100% !important;
+  max-width: none !important;
+  pointer-events: none;
+  box-shadow: 0 0.4rem 1.2rem rgba(10, 46, 53, 0.18) !important;
+  transition: box-shadow 0.25s ease;
+}
+
+.stickyCtaBarVisible .stickyCtaButton {
+  pointer-events: auto;
+}
+
 .buttonGroup {
   display: flex;
   flex-wrap: wrap;
@@ -106,8 +157,9 @@
   font-size: 1.4rem !important; // text-sm (14px with 16px base = 1.4rem with 10px base)
   font-weight: 500 !important; // font-medium
   transition: all 0.2s ease !important;
-  height: 3rem !important; // h-10 (40px with 16px base = 4rem with 10px base)
-  border-radius: 0.6rem !important; // rounded-md (6px with 16px base = 0.6rem with 10px base)
+  min-height: 5rem !important;
+  height: 5rem !important;
+  border-radius: 1.2rem !important;
   padding-left: 2.4rem !important; // px-6 (24px with 16px base = 2.4rem with 10px base)
   padding-right: 2.4rem !important;
   outline: none !important;
@@ -149,6 +201,16 @@
 .outlineButton {
   border-color: #2D5A63 !important;
   color: #2D5A63 !important;
+  min-height: 5rem !important;
+  height: 5rem !important;
+  border-radius: 1.2rem !important;
+  padding-left: 2.4rem !important;
+  padding-right: 2.4rem !important;
+  border-width: 1px !important;
+
+  &:has(> svg) {
+    padding-right: 1.6rem !important;
+  }
 
   &:hover {
     background-color: #F0C8C0 !important;
