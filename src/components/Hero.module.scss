@@ -2,6 +2,7 @@
 
 .hero {
   position: relative;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -89,42 +90,36 @@
 
 .primaryCtaObserve {
   width: fit-content;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
 }
 
 .stickyCtaBar {
   position: fixed;
-  top: 0;
+  /* Below site header; Header sets --sticky-cta-top (includes mobile flyout when open) */
+  top: var(--sticky-cta-top, 0px);
   left: 0;
   right: 0;
   z-index: var(--z-index-fixed);
   padding: 0;
-  padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+  padding-top: 0.8rem;
   padding-left: calc(1.2rem + env(safe-area-inset-left, 0px));
   padding-right: calc(1.2rem + env(safe-area-inset-right, 0px));
   pointer-events: none;
   opacity: 0;
-  transform: translateY(-0.8rem);
-  transition:
-    opacity 0.35s var(--ease-out, cubic-bezier(0, 0, 0.2, 1)),
-    transform 0.35s var(--ease-out, cubic-bezier(0, 0, 0.2, 1));
+  transition: top 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .stickyCtaBarVisible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .stickyCtaInner {
   width: 100%;
   display: flex;
   pointer-events: none;
-  transform: scaleX(0.22);
-  transform-origin: left center;
-  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.stickyCtaBarVisible .stickyCtaInner {
-  transform: scaleX(1);
 }
 
 .stickyCtaButton {
@@ -132,7 +127,6 @@
   max-width: none !important;
   pointer-events: none;
   box-shadow: 0 0.4rem 1.2rem rgba(10, 46, 53, 0.18) !important;
-  transition: box-shadow 0.25s ease;
 }
 
 .stickyCtaBarVisible .stickyCtaButton {
@@ -143,6 +137,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.6rem;
+
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: 100%;
+    gap: 1.2rem;
+  }
 }
 
 .primaryButton {
@@ -190,6 +192,11 @@
     pointer-events: none !important;
     opacity: 0.5 !important;
   }
+
+  @media (max-width: 1023px) {
+    width: 100% !important;
+    max-width: none !important;
+  }
 }
 
 .buttonIcon {
@@ -214,6 +221,11 @@
 
   &:hover {
     background-color: #F0C8C0 !important;
+  }
+
+  @media (max-width: 1023px) {
+    width: 100% !important;
+    max-width: none !important;
   }
 }
 

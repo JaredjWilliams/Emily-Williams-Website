@@ -1,3 +1,4 @@
+import { scrollToAnchorId } from "../utils/scrollToAnchor";
 import { ImageWithFallback } from "../ImageWithFallback";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
@@ -180,10 +181,7 @@ export function Gallery() {
                       variant="outline"
                       className={styles.inquireButton}
                       onClick={() => {
-                        const element = document.getElementById("order");
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth" });
-                        }
+                        scrollToAnchorId("order", { behavior: "smooth" });
                       }}
                     >
                       Inquire

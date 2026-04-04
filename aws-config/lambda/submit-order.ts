@@ -1,6 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, PutCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
+import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
 import { CognitoJwtVerifier } from 'aws-jwt-verify';
 
 const dynamoClient = DynamoDBDocumentClient.from(new DynamoDBClient({}));
@@ -103,10 +103,10 @@ export const handler = async (
         message: 'Order submitted successfully',
       }),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error submitting order:', error);
-
-    if (error.name === 'JwtExpiredError' || error.name === 'JwtInvalidSignatureError') {
+    const name = error instanceof Error ? error.name : undefined;
+    if (name === 'JwtExpiredError' || name === 'JwtInvalidSignatureError') {
       return {
         statusCode: 401,
         headers,

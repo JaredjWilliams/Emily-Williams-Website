@@ -1,4 +1,5 @@
 import { Award, Palette, Heart, Users, ArrowRight } from "lucide-react";
+import { scrollToAnchorId } from "../utils/scrollToAnchor";
 import { Button } from "../ui/button";
 import styles from "./About.module.scss";
 
@@ -105,7 +106,7 @@ export function About() {
             size="lg"
             className={styles.cta}
             onClick={() => {
-              document.getElementById("order")?.scrollIntoView({ behavior: "smooth" });
+              scrollToAnchorId("order", { behavior: "smooth" });
             }}
           >
             Start your commission

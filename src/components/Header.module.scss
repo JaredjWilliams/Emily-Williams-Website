@@ -1,13 +1,14 @@
 @use '../styles.scss' as *;
 
 .header {
-  position: static;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   background-color: var(--color-background);
   border-bottom: 0.1rem solid var(--color-border-light);
-  z-index: var(--z-index-sticky);
+  /* Above page content and sticky CTA so bar + menu stay on top */
+  z-index: 1040;
 }
 
 .topBar {

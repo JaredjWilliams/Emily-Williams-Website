@@ -1,9 +1,15 @@
 @use '../styles.scss' as *;
 
 .orderForm {
-  padding-top: var(--section-padding-y);
+  /* Match About surface; stack above Trust (z-index 4); same overlap + radius seam */
+  position: relative;
+  z-index: 5;
+  margin-top: calc(-1 * var(--radius-2xl));
+  padding-top: calc(var(--section-padding-y) + var(--radius-2xl));
   padding-bottom: var(--section-padding-y);
-  background: linear-gradient(to bottom right, #F5D5CE, white, #FAE8E3);
+  background-color: #FAE8E3;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
 }
 
 .container {

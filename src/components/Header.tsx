@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect, useCallback } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { scrollToAnchorId } from "../utils/scrollToAnchor";
 import styles from "./Header.module.scss";
 
 type ShopCategoryItem = { label: string; category: string };
@@ -10,15 +11,70 @@ const shopCategoryItems: ShopCategoryItem[] = [
   { label: "Campuses", category: "campuses" },
 ];
 
+const MOBILE_NAV_MAX = 768;
+
+function setStickyCtaTopPx(headerEl: HTMLElement, navListEl: HTMLUListElement | null, mobileMenuOpen: boolean) {
+  let bottom = headerEl.getBoundingClientRect().bottom;
+  if (mobileMenuOpen && typeof window !== "undefined" && window.innerWidth <= MOBILE_NAV_MAX && navListEl) {
+    const navRect = navListEl.getBoundingClientRect();
+    if (navRect.height > 0) {
+      bottom = Math.max(bottom, navRect.bottom);
+    }
+  }
+  const gapPx = 8;
+  document.documentElement.style.setProperty("--sticky-cta-top", `${Math.round(bottom + gapPx)}px`);
+  window.dispatchEvent(new Event("site:sticky-layout"));
+}
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const navListRef = useRef<HTMLUListElement>(null);
+
+  const publishStickyOffset = useCallback(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    setStickyCtaTopPx(header, navListRef.current, mobileMenuOpen);
+  }, [mobileMenuOpen]);
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    publishStickyOffset();
+    const onScrollOrResize = () => publishStickyOffset();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+    const ro = new ResizeObserver(onScrollOrResize);
+    ro.observe(header);
+    const nav = navListRef.current;
+    if (nav) ro.observe(nav);
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+      ro.disconnect();
+    };
+  }, [publishStickyOffset]);
+
+  useLayoutEffect(() => {
+    if (!mobileMenuOpen) return;
+    let raf1 = 0;
+    let raf2 = 0;
+    raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => publishStickyOffset());
+    });
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+    };
+  }, [mobileMenuOpen, publishStickyOffset]);
 
   const closeMobile = () => setMobileMenuOpen(false);
 
   const scrollToId = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     closeMobile();
+    scrollToAnchorId(id, { behavior: "smooth", deferMs: 60 });
   };
 
   const goToGalleryCategory = (category: string) => {
@@ -32,15 +88,15 @@ export function Header() {
   };
 
   return (
-    <header className={styles.header}>
+    <header ref={headerRef} className={styles.header}>
       <div className={styles.topBar}>
         <div className={styles.topBarContent}>
           <button
             type="button"
             className={styles.logoButton}
             onClick={() => {
-              document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
               closeMobile();
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             aria-label="Emily Lex Studio — back to top"
           >
@@ -64,7 +120,10 @@ export function Header() {
 
       <nav className={styles.nav} aria-label="Primary">
         <div className={styles.navContent}>
-          <ul className={`${styles.navList} ${mobileMenuOpen ? styles.navListOpen : ""}`}>
+          <ul
+            ref={navListRef}
+            className={`${styles.navList} ${mobileMenuOpen ? styles.navListOpen : ""}`}
+          >
             <li className={styles.navItem}>
               <a
                 href="#gallery"

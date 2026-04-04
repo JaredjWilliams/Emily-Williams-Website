@@ -1,4 +1,5 @@
 import { MessageCircle, Palette, Truck, Sparkles, ArrowRight } from "lucide-react";
+import { scrollToAnchorId } from "../utils/scrollToAnchor";
 import { Button } from "../ui/button";
 import styles from "./TrustSection.module.scss";
 
@@ -126,7 +127,7 @@ export function TrustSection() {
             size="lg"
             className={styles.ctaButton}
             onClick={() => {
-              document.getElementById("order")?.scrollIntoView({ behavior: "smooth" });
+              scrollToAnchorId("order", { behavior: "smooth" });
             }}
           >
             Request a commission
