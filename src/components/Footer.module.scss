@@ -47,21 +47,24 @@
 .socialLinks {
   display: flex;
   gap: 1.6rem;
-}
 
-.socialLink {
-  background-color: #2D5A63;
-  padding: 0.8rem;
-  border-radius: 0.8rem;
-  transition: background-color 0.3s ease;
+  .socialLink {
+    color: white;
+    text-decoration: none;
+    background-color: #2D5A63;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    transition: background-color 0.3s ease;
 
-  &:hover {
-    background-color: #C9A961;
-  }
+    &:hover {
+      background-color: #C9A961;
+    }
 
-  .icon {
-    width: 2rem;
-    height: 2rem;
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      color: white;
+    }
   }
 }
 

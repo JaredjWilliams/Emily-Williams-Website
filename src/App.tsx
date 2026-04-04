@@ -5,15 +5,18 @@ import { Gallery } from "./components/Gallery";
 import { OrderForm } from "./components/OrderForm";
 import { Footer } from "./components/Footer";
 import { Toaster } from "./ui/sonner";
+import styles from "./App.module.scss";
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className={styles.app}>
       <Header />
-      <Hero />
-      <About />
-      <Gallery />
-      <OrderForm />
+      <main className={styles.main}>
+        <Hero />
+        <About />
+        <Gallery />
+        <OrderForm />
+      </main>
       <Footer />
       <Toaster />
     </div>
