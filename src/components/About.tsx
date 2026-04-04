@@ -1,6 +1,4 @@
-import { Award, Palette, Heart, Users, ArrowRight } from "lucide-react";
-import { scrollToAnchorId } from "../utils/scrollToAnchor";
-import { Button } from "../ui/button";
+import { Award, Palette, Heart, Users } from "lucide-react";
 import styles from "./About.module.scss";
 
 export function About() {
@@ -78,40 +76,6 @@ export function About() {
               );
             })}
           </div>
-        </div>
-        
-        <div className={styles.infoBox}>
-          <div className={styles.infoGrid}>
-            <div className={styles.infoItem}>
-              <h4>Education</h4>
-              <p>Royal Academy of Fine Arts, Barcelona</p>
-              <p>MFA in Contemporary Art</p>
-            </div>
-            <div className={styles.infoItem}>
-              <h4>Exhibitions</h4>
-              <p>50+ Solo Exhibitions</p>
-              <p>100+ Group Exhibitions</p>
-            </div>
-            <div className={styles.infoItem}>
-              <h4>Collections</h4>
-              <p>Featured in 30+ Museums</p>
-              <p>Private Collections Worldwide</p>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.ctaWrap}>
-          <Button
-            type="button"
-            size="lg"
-            className={styles.cta}
-            onClick={() => {
-              scrollToAnchorId("order", { behavior: "smooth" });
-            }}
-          >
-            Start your commission
-            <ArrowRight className={styles.ctaIcon} aria-hidden />
-          </Button>
         </div>
       </div>
     </section>

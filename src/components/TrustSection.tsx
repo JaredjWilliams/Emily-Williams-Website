@@ -1,6 +1,4 @@
-import { MessageCircle, Palette, Truck, Sparkles, ArrowRight } from "lucide-react";
-import { scrollToAnchorId } from "../utils/scrollToAnchor";
-import { Button } from "../ui/button";
+import { MessageCircle, Palette, Truck, Sparkles } from "lucide-react";
 import styles from "./TrustSection.module.scss";
 
 const steps = [
@@ -119,20 +117,6 @@ export function TrustSection() {
               </details>
             ))}
           </div>
-        </div>
-
-        <div className={styles.bottomCta}>
-          <Button
-            type="button"
-            size="lg"
-            className={styles.ctaButton}
-            onClick={() => {
-              scrollToAnchorId("order", { behavior: "smooth" });
-            }}
-          >
-            Request a commission
-            <ArrowRight className={styles.ctaIcon} aria-hidden />
-          </Button>
         </div>
       </div>
     </section>

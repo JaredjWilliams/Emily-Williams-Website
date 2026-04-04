@@ -11,6 +11,11 @@
   background-color: #FAE8E3;
   border-radius: var(--radius-2xl);
   overflow: hidden;
+  /*
+   * Overlap sits above the gallery in hit-testing; without this, touches/clicks on the
+   * gallery carousel (and controls) hit this section’s empty overlap instead of #gallery.
+   */
+  pointer-events: none;
 
   @media (min-width: 768px) {
     padding-top: calc(4.8rem + var(--radius-2xl));
@@ -19,6 +24,7 @@
 }
 
 .container {
+  pointer-events: auto;
   max-width: 124rem;
   margin: 0 auto;
   padding: 0 1.6rem;
@@ -152,63 +158,3 @@
     color: #2D5A63;
   }
 }
-
-.infoBox {
-  background-color: #FAE8E3;
-  border-radius: 1.6rem;
-  padding: 2.4rem;
-
-  @media (min-width: 1024px) {
-    padding: 3.2rem;
-  }
-}
-
-.infoGrid {
-  display: grid;
-  gap: 2rem;
-  text-align: center;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.4rem;
-  }
-}
-
-.infoItem {
-  h4 {
-    font-size: 2.4rem;
-    color: #0A2E35;
-    margin-bottom: 0.8rem;
-  }
-
-  p {
-    color: #2D5A63;
-  }
-}
-
-.ctaWrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 2.8rem;
-
-  @media (min-width: 768px) {
-    margin-top: 3.2rem;
-  }
-}
-
-.cta {
-  background-color: #C9A961 !important;
-  color: white !important;
-  border: none !important;
-  gap: 0.8rem;
-
-  &:hover {
-    background-color: #D4B574 !important;
-  }
-}
-
-.ctaIcon {
-  width: 2rem;
-  height: 2rem;
-}
-

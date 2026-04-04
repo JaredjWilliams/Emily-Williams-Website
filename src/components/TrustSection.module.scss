@@ -243,29 +243,3 @@
   color: #2D5A63;
   line-height: 1.55;
 }
-
-.bottomCta {
-  display: flex;
-  justify-content: center;
-  margin-top: 3.2rem;
-
-  @media (min-width: 768px) {
-    margin-top: 4rem;
-  }
-}
-
-.ctaButton {
-  background-color: #0A2E35 !important;
-  color: white !important;
-  border: none !important;
-  gap: 0.8rem;
-
-  &:hover {
-    background-color: #2D5A63 !important;
-  }
-}
-
-.ctaIcon {
-  width: 2rem;
-  height: 2rem;
-}
