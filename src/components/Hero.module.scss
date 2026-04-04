@@ -24,13 +24,15 @@
   max-width: 124rem;
   margin: 0 auto;
   padding: 0 1.6rem;
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 8rem;
+
   position: relative;
   z-index: 10;
 
   @media (min-width: 1024px) {
     max-width: 124rem;
+    padding-top: 5.6rem;
   }
 }
 
