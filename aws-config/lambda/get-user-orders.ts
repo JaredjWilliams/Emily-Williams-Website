@@ -46,10 +46,6 @@ export const handler = async (
       new QueryCommand({
         TableName: TABLE_NAME,
         KeyConditionExpression: 'PK = :pk',
-        ExpressionAttributeValues: {
-          ':pk': `USER#${userId}`,
-        },
-        // Only get orders (not other user data)
         FilterExpression: 'begins_with(SK, :orderPrefix)',
         ExpressionAttributeValues: {
           ':pk': `USER#${userId}`,
@@ -61,7 +57,11 @@ export const handler = async (
 
     // Format response (remove internal keys)
     const orders = (result.Items || []).map((item) => {
-      const { PK, SK, GSI1PK, GSI1SK, ...orderData } = item;
+      const orderData = { ...item };
+      delete orderData.PK;
+      delete orderData.SK;
+      delete orderData.GSI1PK;
+      delete orderData.GSI1SK;
       return orderData;
     });
 
@@ -73,10 +73,10 @@ export const handler = async (
         orders: orders,
       }),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching orders:', error);
-
-    if (error.name === 'JwtExpiredError' || error.name === 'JwtInvalidSignatureError') {
+    const name = error instanceof Error ? error.name : undefined;
+    if (name === 'JwtExpiredError' || name === 'JwtInvalidSignatureError') {
       return {
         statusCode: 401,
         headers,

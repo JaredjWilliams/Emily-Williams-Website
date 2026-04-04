@@ -4,8 +4,8 @@ import { Slot } from "@radix-ui/react-slot";
 import { cn } from "./utils";
 import styles from "./button.module.scss";
 
-type ButtonVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
-type ButtonSize = "default" | "sm" | "lg" | "icon";
+type ButtonVariant = "default" | "outline";
+type ButtonSize = "default" | "lg";
 
 interface ButtonVariants {
   variant?: ButtonVariant;
@@ -15,18 +15,12 @@ interface ButtonVariants {
 const getButtonClasses = ({ variant = "default", size = "default" }: ButtonVariants): string => {
   const variantMap: Record<ButtonVariant, string> = {
     default: styles.buttonDefault,
-    destructive: styles.buttonDestructive,
     outline: styles.buttonOutline,
-    secondary: styles.buttonSecondary,
-    ghost: styles.buttonGhost,
-    link: styles.buttonLink,
   };
 
   const sizeMap: Record<ButtonSize, string> = {
     default: styles.buttonSizeDefault,
-    sm: styles.buttonSizeSm,
     lg: styles.buttonSizeLg,
-    icon: styles.buttonSizeIcon,
   };
 
   return cn(styles.button, variantMap[variant], sizeMap[size]);
@@ -55,4 +49,3 @@ function Button({
 }
 
 export { Button, type ButtonVariant, type ButtonSize };
-

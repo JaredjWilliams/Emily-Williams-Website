@@ -6,5 +6,9 @@
 
 .main {
   flex-grow: 1;
+  /* Contrasts with #FAE8E3 sections so rounded corners (e.g. Gallery top) stay visible */
+  background-color: #fff;
+  /* Scroll headroom: last in-flow targets (#order) can reach “under” fixed header + sticky CTA */
+  padding-bottom: min(42vh, 28rem);
 }
 

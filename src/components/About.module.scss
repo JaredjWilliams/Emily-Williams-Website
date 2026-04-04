@@ -1,9 +1,16 @@
 @use '../styles.scss' as *;
 
 .about {
-  padding-top: var(--section-padding-y);
+  /* Stack above gallery (gallery is z-index 2) and overlap by radius so top corner cutouts
+     show gallery white — not same pink as body/main, so the curve reads clearly */
+  position: relative;
+  z-index: 3;
+  margin-top: calc(-1 * var(--radius-2xl));
+  padding-top: calc(var(--section-padding-y) + var(--radius-2xl));
   padding-bottom: var(--section-padding-y);
-  background-color: white;
+  background-color: #FAE8E3;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
 }
 
 .container {

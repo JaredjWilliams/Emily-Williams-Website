@@ -1,19 +1,57 @@
-import { useRef, useState, useEffect, type ComponentProps } from "react";
+import { useRef, useState, useEffect, useLayoutEffect, useCallback, type ComponentProps } from "react";
 import { ArrowRight } from "lucide-react";
+import { scrollToAnchorId } from "../utils/scrollToAnchor";
 import { Button } from "../ui/button";
 import { ImageWithFallback } from "../ImageWithFallback";
 import headshotImage from "../assets/Emily/headshot_one.jpg";
 import styles from "./Hero.module.scss";
 
+/** Sync with Header (--sticky-cta-top) + measured sticky CTA bar when visible */
+function publishAnchorScrollPadding(stickyCtaVisible: boolean, stickyBarEl: HTMLElement | null) {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue("--sticky-cta-top").trim();
+  let stickyTop = parseFloat(raw);
+  if (Number.isNaN(stickyTop)) stickyTop = 0;
+  const gapPx = 8;
+  const headerBottom = Math.max(0, stickyTop - gapPx);
+  let padding = headerBottom;
+  if (stickyCtaVisible && stickyBarEl) {
+    padding = stickyTop + stickyBarEl.offsetHeight;
+  }
+  const minPx = 48;
+  document.documentElement.style.setProperty(
+    "--anchor-scroll-padding",
+    `${Math.max(minPx, Math.ceil(padding) + 6)}px`
+  );
+}
+
 export function Hero() {
   const primaryCtaRef = useRef<HTMLDivElement>(null);
+  const stickyBarRef = useRef<HTMLDivElement>(null);
   const [stickyCtaVisible, setStickyCtaVisible] = useState(false);
 
+  const syncAnchorPadding = useCallback(() => {
+    publishAnchorScrollPadding(stickyCtaVisible, stickyBarRef.current);
+  }, [stickyCtaVisible]);
+
+  useLayoutEffect(() => {
+    syncAnchorPadding();
+    const onLayout = () => syncAnchorPadding();
+    window.addEventListener("resize", onLayout);
+    window.addEventListener("scroll", onLayout, { passive: true });
+    window.addEventListener("site:sticky-layout", onLayout);
+    const bar = stickyBarRef.current;
+    const ro = new ResizeObserver(onLayout);
+    if (bar) ro.observe(bar);
+    return () => {
+      window.removeEventListener("resize", onLayout);
+      window.removeEventListener("scroll", onLayout);
+      window.removeEventListener("site:sticky-layout", onLayout);
+      ro.disconnect();
+    };
+  }, [syncAnchorPadding]);
+
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToAnchorId(id, { behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -51,6 +89,7 @@ export function Hero() {
   return (
     <>
       <div
+        ref={stickyBarRef}
         className={`${styles.stickyCtaBar} ${stickyCtaVisible ? styles.stickyCtaBarVisible : ""}`}
         role="region"
         aria-label="Commission a painting"
