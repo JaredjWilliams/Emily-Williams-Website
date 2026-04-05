@@ -112,7 +112,8 @@ export function Hero() {
                 Original Paintings by <span className={styles.highlight}>Emily Lex</span>
               </h1>
 
-              <p className={styles.description}>hello Aunt Ally</p>
+              <p className={styles.description}>Handcrafted originals—one-of-a-kind paintings made slowly, with care, for spaces that
+              deserve something personal and lasting.</p>
 
               <div className={styles.buttonGroup}>
                 <div ref={primaryCtaRef} className={styles.primaryCtaObserve}>
